@@ -14,5 +14,5 @@ Everything listed in the pdf is working
 (PreferenceScreen, Themes, Attributes, different layouts for different screens etc)<br/>
 Well, in a project this small I decided not to spend too much time preparing the structure of the project, but in a bigger projects that's make sense to spend more time preparing project before the actual work
 ## On what devices app was tested?
-App was tested on a tablet and android emulator running Nexus 5X API 26. <br\>
+App was tested on a tablet and android emulator running Nexus 5X API 26. <br/>
 No problems detected on these devices.
