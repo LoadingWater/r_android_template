@@ -43,17 +43,15 @@ class ActivityController(val activity: AppCompatActivity)
 		return "Item not found"
 	}
 
-	fun setLocale(languageCode: String)
+	/**
+	 * Use this function before any binding/inflation/setContentView()
+	 * Sets locale without recreation activity
+	 */
+	fun setInitialLocale(languageCode: String)
 	{
-		val currentLocale = activity.resources.configuration.locales[0].toLanguageTag()
 		activity.resources.configuration.setLocale(Locale.forLanguageTag(languageCode))
 		activity.resources.updateConfiguration(activity.resources.configuration, activity.resources.displayMetrics)
 		sharedViewModel.setLocale(languageCode)
-
-		if (currentLocale != languageCode)
-		{
-			activity.recreate()
-		}
 	}
 
 	fun toggleLocale()

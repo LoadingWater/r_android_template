@@ -42,9 +42,6 @@ class SharedApplicationViewModel(application: Application): AndroidViewModel(app
 		}
 	}
 
-	// No point of adding getter/setter to this. It's used only one time at the app startup
-	val isFirstTime = MutableLiveData<Boolean>(true)
-
 	init
 	{
 		_lastId.value = PreferenceManager.getDefaultSharedPreferences(getApplication<Application>().applicationContext).getString(Preferences.lastId.name, "N/A")

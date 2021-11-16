@@ -19,9 +19,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        controller = ActivityController(this)
+        controller.setInitialLocale(sharedApplicationViewModel.getLocale())
+
         binding = ActivityMainBinding.inflate(layoutInflater)
 
-        controller = ActivityController(this)
         controller.parseData()
         controller.initRecycler(binding.recyclerAm)
 
@@ -37,13 +39,6 @@ class MainActivity : AppCompatActivity() {
 
         binding.changeLocaleAm.setOnClickListener {
             controller.toggleLocale()
-        }
-
-        // Executes once per app launch
-        if (sharedApplicationViewModel.isFirstTime.value!!)
-        {
-            sharedApplicationViewModel.isFirstTime.value = false
-            controller.setLocale(sharedApplicationViewModel.getLocale())
         }
         setContentView(binding.root)
     }
