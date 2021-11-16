@@ -4,5 +4,5 @@
     <string name="area">Area</string>
     <string name="land">Land</string>
     <string name="district">District</string>
-
+    <string name="show_estate">Show estate number</string>
 </resources>

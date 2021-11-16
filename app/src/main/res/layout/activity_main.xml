@@ -9,11 +9,22 @@
         android:id="@+id/recycler_am"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        tools:listitem="@layout/house_item"
-        tools:itemCount="10"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/showEstate_am"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:itemCount="10"
+        tools:listitem="@layout/house_item" />
+
+    <Button
+        android:id="@+id/showEstate_am"
+        style="@style/custom_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/show_estate"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

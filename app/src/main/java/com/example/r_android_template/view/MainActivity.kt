@@ -1,18 +1,12 @@
 package com.example.r_android_template.view
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.r_android_template.adapters.HousesRecyclerAdapter
+import com.example.r_android_template.controllers.ActivityController
 import com.example.r_android_template.databinding.ActivityMainBinding
-import com.example.r_android_template.decorators.HouseItemDecorator
-import com.example.r_android_template.models.House
-import com.example.r_android_template.service.Service
-import com.example.r_android_template.view.controllers.ActivityController
 import com.example.r_android_template.view_models.SharedApplicationViewModel
-import com.google.gson.Gson
+import com.google.android.material.snackbar.Snackbar
 
 
 class MainActivity : AppCompatActivity() {
@@ -27,16 +21,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         controller = ActivityController(this)
+        controller.parseData()
+        controller.initRecycler(binding.recyclerAm)
 
-        val data = Gson().fromJson(Service.estateJsonString, Array<House>::class.java).toList()
-        sharedApplicationViewModel.setHouses(data)
+        binding.showEstateAm.setOnClickListener {
+            val estateNumber = controller.findHouseById(sharedApplicationViewModel.getLastId())
+            Snackbar.make(this, it, "Estate number is: $estateNumber", Snackbar.LENGTH_LONG).show()
+        }
 
-        binding.recyclerAm.layoutManager = LinearLayoutManager(this)
-        binding.recyclerAm.adapter = HousesRecyclerAdapter(data, this)
-        binding.recyclerAm.addItemDecoration(HouseItemDecorator())
-
-        Toast.makeText(this, "Last id: ${sharedApplicationViewModel.lastId.value}", Toast.LENGTH_SHORT).show()
-
-
+        Snackbar.make(this, binding.root, "Last id is: ${sharedApplicationViewModel.getLastId()}", Snackbar.LENGTH_LONG).show()
     }
 }

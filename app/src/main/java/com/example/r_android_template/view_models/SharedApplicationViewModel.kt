@@ -11,8 +11,9 @@ import com.example.r_android_template.models.House
 
 class SharedApplicationViewModel(application: Application): AndroidViewModel(application)
 {
-	private val _lastId = MutableLiveData<String>("")
+	private val _lastId = MutableLiveData<String>("N/A")
 	val lastId: LiveData<String> = _lastId
+	fun getLastId() = _lastId.value!!
 	fun setLastId(newId: String)
 	{
 		_lastId.value = newId
@@ -28,7 +29,7 @@ class SharedApplicationViewModel(application: Application): AndroidViewModel(app
 
 	private val _houses = MutableLiveData<List<House>>(mutableListOf(House("N/A", "N/A", 0.0, "N/A", "N/A")))
 	val houses: LiveData<List<House>> = _houses
-	fun getHouses() = _houses.value
+	fun getHouses() = _houses.value!!
 	fun setHouses(newValue: List<House>)
 	{
 		_houses.value = newValue
