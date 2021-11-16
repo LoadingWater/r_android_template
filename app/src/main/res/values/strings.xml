@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">r_android_template</string>
+    <string name="app_name" translatable="false">Kiryl Plakhotski</string>
+    <string name="estate_number">Estate number</string>
+    <string name="area">Area</string>
+    <string name="land">Land</string>
+    <string name="district">District</string>
+
 </resources>

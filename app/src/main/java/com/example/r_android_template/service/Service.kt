@@ -2,7 +2,7 @@ package com.example.r_android_template.service
 
 object Service {
 
-    private const val estateJsonString = """
+    const val estateJsonString = """
         [
             {
               "id": 1,
