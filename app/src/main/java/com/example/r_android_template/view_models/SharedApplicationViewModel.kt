@@ -6,7 +6,8 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.preference.PreferenceManager
-import com.example.r_android_template.enums.Preferences
+import com.example.r_android_template.constants.enums.AppLocales
+import com.example.r_android_template.constants.enums.Preferences
 import com.example.r_android_template.models.House
 
 class SharedApplicationViewModel(application: Application): AndroidViewModel(application)
@@ -22,16 +23,31 @@ class SharedApplicationViewModel(application: Application): AndroidViewModel(app
 		}
 	}
 
-	init
-	{
-		_lastId.value = PreferenceManager.getDefaultSharedPreferences(getApplication<Application>().applicationContext).getString(Preferences.lastId.name, "N/A")
-	}
-
 	private val _houses = MutableLiveData<List<House>>(mutableListOf(House("N/A", "N/A", 0.0, "N/A", "N/A")))
 	val houses: LiveData<List<House>> = _houses
 	fun getHouses() = _houses.value!!
 	fun setHouses(newValue: List<House>)
 	{
 		_houses.value = newValue
+	}
+
+	private val _locale = MutableLiveData<String>(AppLocales.en_US)
+	val locale: LiveData<String> = _locale
+	fun getLocale() = _locale.value!!
+	fun setLocale(newValue: String)
+	{
+		_locale.value = newValue
+		PreferenceManager.getDefaultSharedPreferences(getApplication<Application>().applicationContext).edit {
+			putString(Preferences.locale.name, newValue)
+		}
+	}
+
+	// No point of adding getter/setter to this. It's used only one time at the app startup
+	val isFirstTime = MutableLiveData<Boolean>(true)
+
+	init
+	{
+		_lastId.value = PreferenceManager.getDefaultSharedPreferences(getApplication<Application>().applicationContext).getString(Preferences.lastId.name, "N/A")
+		_locale.value = PreferenceManager.getDefaultSharedPreferences(getApplication<Application>().applicationContext).getString(Preferences.locale.name, AppLocales.en_US)
 	}
 }

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Kiryl Plakhotski</string>
+    <string name="estate_number">Numer działki</string>
+    <string name="area">Strefa</string>
+    <string name="land">Teren</string>
+    <string name="district">Okrąg</string>
+    <string name="show_estate">Pokaż numer działki</string>
+    <string name="change_locale">Zmień język</string>
+</resources>

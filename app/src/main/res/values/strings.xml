@@ -5,4 +5,5 @@
     <string name="land">Land</string>
     <string name="district">District</string>
     <string name="show_estate">Show estate number</string>
+    <string name="change_locale">Change locale</string>
 </resources>
